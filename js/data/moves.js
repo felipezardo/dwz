@@ -1,5 +1,5 @@
-// GERADO por tools/extract.py a partir dos PDFs oficiais. Não edite à mão.
-export const MOVES = [
+// Dados de Moves (EN-US e PT-BR)
+export const MOVES_EN = [
  {
   "name": "Aid a PC",
   "stat": null,
@@ -253,10 +253,273 @@ export const MOVES = [
   "group": "Extra Moves"
  }
 ];
-export const CHANGING_CLASSES = [
+export const CHANGING_CLASSES_EN = [
  "1. Choose your new Class.",
  "2. Assign your Stats as if you were creating a new character. You can use your old Stats as guidance or completely ignore them and use this opportunity to start with a clean slate.",
  "3. Gain your new Class Starting Move. Lose the one from your old Class.",
  "4. Reassign your Advancements. Count the number of advancements you had from your old Class, and gain the same number in your old Class.",
  "5. Your XP, Level, and Treasure Track remain unchanged. 6. Your max HP changes to that of your new Class, modified by your per Level bonus (+1 per Level beyond 1, max +10). Your current HP goes up or down by the same amount (this can’t lower it below 1). For example, Erinyette the level 5 Rogue resolved her Reformed Struggle, and decided to change to the Paladin Class to represent her determination to fight for what’s right. Erinyette had 4 Advancements as a Rogue. Her Player decides to keep the Burglar Path and it’s Starting Move, Expert Treasure-hunter as a Multiclass, but she’ll use the other 3 Advancements to improve her WIS, unlock the Inquisitor Path (their nemesis has hidden devotees everywhere), and to reveal a new Struggle: Vengeful."
 ];
+export const MOVES_PT = [
+ {
+  "name": "Ajudar um PJ",
+  "stat": null,
+  "body": [
+   "Enquanto você ajudar outro PJ, ele tem vant nas rolagens dele. Antes que o PJ ajudado role, você deve escolher um:",
+   "◆ É arriscado; todas as consequências disso também afetam você",
+   "◆ É estressante; marque uma Condição",
+   "◆ Ele frustra você; apague 1 de Profundidade com ele"
+  ],
+  "id": "aid-a-pc",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Conjurar um Feitiço",
+  "stat": "+Variável",
+  "body": [
+   "Quando você invocar magia que pode usar, diga o que quer que aconteça; o MJ dirá a mag do efeito e então você a compara com o seu Atributo de Conjuração (veja a Classe ou Trilha que é a fonte da sua magia).",
+   "◆ Se a mag exceder seu Atributo de Conjuração, o feitiço está além da sua capacidade; negocie um efeito menor ou Realize um Ritual para alcançá-lo",
+   "◆ Se a mag for igual ao seu Atributo de Conjuração, role+Atributo de Conjuração com desv",
+   "◆ Se a mag for menor que seu Atributo de Conjuração, role+Atributo de Conjuração ✴Com 10+, o efeito se concretiza como pretendido. ✴Com 7-9, ele acontece, mas escolha um:",
+   "◆ Uma opção única dependendo da fonte da sua magia",
+   "◆ O esforço é cansativo; marque uma Condição",
+   "◆ Há uma reviravolta; o MJ adicionará um “e” ou “mas” ao efeito ✴Com 6-, algo dá terrivelmente errado; marque 1 XP e o MJ faz um Movimento."
+  ],
+  "id": "cast-a-spell",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Desafiar o Perigo",
+  "stat": "+Variável",
+  "body": [
+   "Quando você enfrentar um risco, ameaça ou obstáculo — e nenhum outro Movimento se encaixar — descreva como você faz isso, então o MJ escolhe um e você rola:",
+   "◆ + for se você abrir caminho à força, suportar fisicamente ou quebrar",
+   "◆ + des se você esquivar, superar na velocidade ou mirar com precisão",
+   "◆ + int se você analisar, notar ou superar pela astúcia",
+   "◆ + sab se você examinar, ter empatia ou resistir com determinação",
+   "◆ + car se você encantar, enganar, impressionar ou provocar",
+   "✴Com 10+, você supera isso com perfeição. ✴Com 7-9, você prevalece, mas escolha um abaixo:",
+   "◆ Fazer isso atrai atenção indesejada ou agrava a situação; o MJ dirá como depois que você escolher esta opção",
+   "◆ O esforço esgota ou abala você; marque uma Condição",
+   "◆ Você sacrifica algo para fazer isso; diga o que é. O MJ pode pedir mais",
+   "✴Com 6-, seus esforços são frustrados ou dão terrivelmente errado; marque 1 XP e o MJ faz um Movimento."
+  ],
+  "id": "defy-danger",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Sentir Motivação",
+  "stat": "+sab",
+  "body": [
+   "Quando você examinar alguém ao longo de uma conversa, role+ sab. ✴Com 10+, você pode fazer ao jogador dele duas perguntas durante a conversa (se for um PdM, o MJ responde). ✴Com 7-9, faça apenas uma. Essas perguntas podem ser sobre os pensamentos, sentimentos ou motivações de um personagem. Todas as respostas devem ser verdadeiras, mesmo que o(s) personagem(ns) não o sejam. ✴Com 6-, se estiver estudando um PdM, você é descoberto ou interrompido; marque 1 XP e o MJ faz um Movimento. Se estiver estudando um PJ, ele faz uma pergunta a você no lugar."
+  ],
+  "id": "sense-motive",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Esgueirar-se",
+  "stat": "+DES",
+  "body": [
+   "Quando você evitar ser notado furtivamente, role+ des. ✴Com 10+, você permanece completamente indetectado. ✴Com 7-9, você consegue, mas o MJ escolhe um:",
+   "◆ Alguém fica desconfiado; você tem desv para Esgueirar-se até que isso mude",
+   "◆ Você conseguiu por um triz; marque uma Condição",
+   "◆ Você não tem muito tempo; aja agora antes que a janela de oportunidade se feche ✴Com 6-, você é avistado ou esperado; marque 1 XP e o MJ faz um Movimento."
+  ],
+  "id": "sneak-past",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Recordar Conhecimento",
+  "stat": "+Perguntas",
+  "body": [
+   "Quando você vasculhar sua mente atrás de informações sobre um assunto específico, faça ao MJ uma pergunta sobre ele, responda às perguntas abaixo e então role com +1 para cada “Sim”:",
+   "◆ Você tem acesso a um livro ou registro equivalente sobre este assunto?",
+   "◆ Este assunto está relacionado às suas Origens?",
+   "◆ Este assunto é relevante para a sua Provação (Struggle)?",
+   "✴Com 10+, o MJ responde generosamente, e você ou um aliado também ganha vant na primeira vez que alguém agir com base na resposta. ✴Com 7-9, o MJ apenas responde generosamente. ✴Com 6-, o MJ responde com um perigo ou uma verdade indesejada; marque 1 XP e o MJ faz um Movimento."
+  ],
+  "id": "spout-lore",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Desvendar Segredos",
+  "stat": "+int",
+  "body": [
+   "Quando você investigar uma situação ou local misterioso, pergunte ao MJ: Há algum segredo para descobrir aqui? Se “Sim”, role+ int. Não importa o resultado, você sempre descobre algo; o MJ dirá o quê. ✴Com 10+, sua descoberta é clara e significativa. ✴Com 7-9, escolha um abaixo:",
+   "◆ É uma pista importante, mas não uma resposta clara",
+   "◆ A descoberta coloca você em risco; o MJ dirá como depois que você escolher esta opção",
+   "◆ A descoberta abala você; marque uma Condição",
+   "✴Com 6-, a descoberta é perigosa; marque 1 XP e o MJ faz um Movimento."
+  ],
+  "id": "unearth-secrets",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Confortar ou Apoiar",
+  "stat": null,
+  "body": [
+   "Uma vez por sessão, depois que você oferecer conforto ou apoio a outro PJ, responda às seguintes perguntas:",
+   "◆ Vocês exploraram, mudaram ou reafirmaram um Relacionamento ou Vínculo?",
+   "◆ Ele se abriu com você em troca?",
+   "◆ Algum de vocês revelou algo novo sobre sua Provação (Struggle)?",
+   "Para cada “Sim”, quem foi confortado pode escolher limpar uma Condição marcada, ganhar 1 de Profundidade no Relacionamento com quem confortou, ou fazer quem confortou limpar uma Condição marcada. Quem foi confortado pode escolher uma mesma opção mais de uma vez."
+  ],
+  "id": "comfort-or-support",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Manipular",
+  "stat": "+CAR",
+  "body": [
+   "Quando você influenciar um PdM para fazer o que você quer, escolha uma abordagem abaixo e role+ car:",
+   "◆ Se você enganá-lo com palavras ou ações falsas, ele pode mais tarde buscar a verdade ou descobrir um segredo sobre você",
+   "◆ Se você persuadi-lo aberta e honestamente, ele pode pedir uma promessa e/ou pagamento, ou cumprir apenas parcialmente",
+   "◆ Se você ameaçar a segurança ou os interesses dele, ele pode agravar o conflito agora, ou escapar ou trair você mais tarde",
+   "✴Com 10+, ele fará isso da melhor forma que puder. ✴Com 7-9, ele tentará, mas o MJ adicionará uma complicação baseada na sua abordagem. ✴Com 6-, ele piora as coisas; marque 1 XP e o MJ faz um Movimento."
+  ],
+  "id": "pull-strings",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Trocar Golpes",
+  "stat": "+FOR ou +DES",
+  "body": [
+   "Quando você enfrentar um inimigo em batalha, role+ for corpo a corpo ou + des à distância (ou com armas #precisas) ✴Com 10+, escolha um:",
+   "◆ Um aliado ganha uma oportunidade fugaz",
+   "◆ Você causa dano máx",
+   "◆ Você sofre dano mín",
+   "✴Com 7-9, escolha um destes em vez disso:",
+   "◆ Algo irrita ou provoca você; marque uma Condição",
+   "◆ Você concede ao oponente uma oportunidade fugaz",
+   "◆ Você perde ou quebra algo. Escolha o quê; o MJ pode pedir mais ✴Com 6-, você causa dano mín ou sofre dano máx (sua escolha); marque 1 XP e o MJ faz um Movimento.",
+   "Depois que as escolhas forem feitas, cause o seu dano e sofra o dele."
+  ],
+  "id": "trade-blows",
+  "group": "Core Moves"
+ },
+ {
+  "name": "Tamanho do Dado de Dano",
+  "stat": null,
+  "body": [
+   "Alguns efeitos podem aumentar ou diminuir o tamanho do dado de dano. Os níveis de dados poliédricos de Dungeon World 2 são os seguintes:",
+   "d4 | d6 | d8 | d10 | d12 | d12+d4 | d12+d6 | d12+d8 | d12+d10"
+  ],
+  "id": "damage-dice-size",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Acampar",
+  "stat": null,
+  "body": [],
+  "id": "make-camp",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Encerrar a Sessão",
+  "stat": null,
+  "body": [
+   "Quando vocês chegarem ao fim de uma sessão, respondam às seguintes perguntas em grupo:",
+   "◆ Alguém adicionou Profundidade ao(s) seu(s) Relacionamento(s)?",
+   "◆ Nós derrotamos uma ameaça perigosa, visitamos um novo local e/ou encontramos um tesouro memorável?",
+   "◆ Nós descobrimos algo novo e importante sobre o mundo ou PdMs?",
+   "Para cada “Sim”, todos marcam XP."
+  ],
+  "id": "end-the-session",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Encarar a Morte",
+  "stat": null,
+  "body": [
+   "Quando você chegar a 0 PV, você fica Indefeso até recuperar PV ou a Cena terminar. Enquanto estiver Indefeso, se perder qualquer PV, você morre. Quando recuperar qualquer PV, tranque uma das suas Condições e você não estará mais Indefeso. Quando tomar uma ação decisiva enquanto estiver Indefeso, escolha um antes de resolver a ação:",
+   "◆ Apostar com a Morte, role+nada. ✴Com 10+, você supera a dor; recupere metade dos seus PV máx (arredondado para baixo) e então resolva sua ação. ✴Com 7-9, o MJ diz que parte de você não sobreviverá; aceite a perda e recupere 1 PV, ou apegue-se a ela e morra após agir. ✴Com 6-, você está ferido demais para agir e morrerá antes que esta Cena termine; você diz quando. Quais são suas últimas palavras?",
+   "◆ Partir em Chamas de Glória; assuma brevemente o controle da Cena, descreva um último feito que você realiza e então morra."
+  ],
+  "id": "face-death",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Subir de Nível",
+  "stat": null,
+  "body": [
+   "Quando você marcar o último XP na trilha de Experiência do seu PJ, limpe a trilha, adicione 1 ao seu Nível e PV atuais/máximos (até +10), e ganhe um Avanço disponível para o seu novo Nível (ou inferior)."
+  ],
+  "id": "level-up",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Atingir o Limite",
+  "stat": null,
+  "body": [
+   "Quando você marcar sua última Condição, limpe todas as suas Condições marcadas e então escolha e interprete uma das seguintes explosões:",
+   "◆ Irritado — Ataque verbalmente seus aliados ou quebre algo importante",
+   "◆ Distraído — Afaste-se sozinho ou perca algo relevante",
+   "◆ Exausto — Desabe ou desista quando mais importa",
+   "◆ Assustado — Esconda-se ou fuja do perigo",
+   "◆ Inseguro — Supercompense ou critique alguém duramente",
+   "Se a sua explosão não for extrema o suficiente, o MJ pode pedir que você vá mais longe. Após a explosão, tranque a Condição escolhida.",
+   "Uma vez por sessão, quando vocês passarem algumas horas descansando (mesmo enquanto se aventuram), descrevam cooperativamente o que cada PJ está fazendo. As coisas no mundo pioram cada vez que vocês Acampam.",
+   "Quando terminarem de Acampar, cada PJ recupera todos os PV e limpa uma Condição marcada."
+  ],
+  "id": "reach-your-limit",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Realizar um Ritual",
+  "stat": null,
+  "body": [
+   "Quando você recorrer a uma fonte de poder mágico (objeto, pessoa ou lugar) para criar um efeito, diga ao MJ o que está tentando alcançar. O MJ dirá um número de requisitos até a mag do efeito (mín. 1) dentre os seguintes (preenchendo as lacunas ou fazendo escolhas quando necessário):",
+   "◆ Primeiro você deve ___________",
+   "◆ Vai levar dias/semanas/meses",
+   "◆ Vai exigir ___________",
+   "◆ O efeito será instável ou limitado",
+   "◆ Você e seus aliados arriscarão ___________",
+   "◆ Você precisará da ajuda de ___________",
+   "◆ Você terá que destruir ___________ para fazer isso",
+   "Assim que todos os requisitos forem cumpridos, o ritual está completo e o efeito mágico acontece."
+  ],
+  "id": "perform-a-ritual",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Empreender uma Jornada Perigosa",
+  "stat": null,
+  "body": [
+   "Quando vocês viajarem por território hostil, escolham um destino, um líder e um método de viagem:",
+   "◆ Rápido, arriscando tudo. -1 na rolagem, todos marcam uma Condição; vocês chegam antes do esperado",
+   "◆ Ritmo normal. +1 na rolagem, apenas o líder marca uma Condição; vocês chegam quando esperado",
+   "◆ Lento e cuidadoso. +2 na rolagem; vocês chegam depois do esperado",
+   "Então o líder rola com o modificador correspondente. ✴Com 10+, vocês chegam com uma dádiva; o MJ dirá qual. ✴Com 7-9, vocês chegam lá, mas escolham um:",
+   "◆ Alguém está seguindo vocês; deixem que sigam, ou todos marcam uma Condição para despistá-los",
+   "◆ Algo desagradável aguarda no destino de vocês",
+   "◆ Vocês encontram um perigo pelo caminho, mas têm a vantagem da surpresa contra ele",
+   "✴Com 6-, um perigo surpreende vocês; todos marcam 1 XP e o MJ faz um Movimento.",
+   "Uma \"dádiva\" pode ser uma ruína valiosa, um PdM prestativo, uma árvore mágica, um tesouro abandonado ou outra coisa. Mesmo que não seja imediatamente útil de forma óbvia, com algum trabalho duro e/ou ideias inteligentes ainda pode valer a pena."
+  ],
+  "id": "undertake-a-perilous-journey",
+  "group": "Extra Moves"
+ },
+ {
+  "name": "Magnitude (Mag)",
+  "stat": "Mag",
+  "body": [
+   "Magnitude (mag) representa o poder geral de um feitiço. O MJ tem a palavra final sobre a mag de um feitiço, com base no alvo, severidade, alcance, duração, área e fatores semelhantes do efeito. As diretrizes abaixo devem ajudar:",
+   "Mag 0 — Magia menor (às vezes chamada de truques, preces ou feitiços básicos) pode ser executada até por iniciantes. É o equivalente aos Níveis de Magia 0 e 1 da 5e. Poderia ser alcançada sem magia alguma. Exemplos incluem: disparar um dardo mágico (1d4 de dano); curar arranhões e hematomas (1d4 PV restaurados); comunicar-se do outro lado de uma sala; invocar uma fada minúscula; ler as emoções atuais de alguém; encantar alguém distraído ou exausto; induzir um sono leve e agitado; desacelerar uma queda; tornar alguém invisível por alguns segundos; reparar desgaste comum.",
+   "mag 1 — Magia padrão comumente realizada por praticantes comuns, equivalente aos Níveis de Magia 2 e 3 da 5e. Fazer algo semelhante sem magia exigiria esforço complexo, demorado ou coordenado. Exemplos incluem: disparar uma flecha ácida (1d8 de dano #perfurante); curar cortes profundos (1d8 PV restaurados); comunicar-se através de um país; invocar um diabrete astuto; ler os pensamentos superficiais de alguém; encantar uma pessoa comum; induzir um sono profundo mas comum; flutuar até uma distância #próximo; tornar alguém invisível por alguns minutos; criar um item mundano a partir de matérias-primas.",
+   "mag 2 — Magia maior que exige muito das habilidades da maioria dos praticantes; apenas mestres conseguem realizá-la de forma confiável todos os dias. Semelhante aos Níveis de Magia 4 e 5 da 5e, fazer essas coisas sem magia exigiria esforço extremo, coordenação, ferramentas, tempo e/ou treinamento. Exemplos incluem: disparar uma bola de fogo explosiva (1d12 de dano #perfurante); curar ossos quebrados (1d12 PV restaurados); comunicar-se com um fantasma ou espírito; invocar um servo elemental; ler o desejo secreto de alguém; encantar uma mente protegida ou hostil; induzir um sono que não terminará até o dia seguinte; voar pelos próximos minutos; tornar alguém invisível por uma hora; conjurar um item mundano do nada.",
+   "mag 3 — Alta magia que é impossível para todos, exceto praticantes mestres. Equivalente aos Níveis de Magia 6-7 da 5e, seria quase impossível fazer algo semelhante sem magia, mesmo com toda a ajuda do mundo. Exemplos de efeitos incluem: emitir uma nuvem de gás que envenena quem a respira (1d12+1d6 de dano #perfurante); restaurar alguém à beira da morte (1d12+1d6 PV restaurados); comunicar-se com outro plano de existência; invocar um guardião demoníaco; controlar uma mente enfraquecida; induzir um sono de um ano; voar por algumas horas; tornar alguém invisível pelo resto do dia; transformar uma criatura em outra semelhante; criar uma porta para outra dimensão; erguer telecineticamente uma rocha ou pequena casa; teletransportar-se por alguns quilômetros.",
+   "mag 4+ — Magia mítica que alguns mestres passam a vida inteira buscando; apenas os melhores dos melhores conseguem realizar esses efeitos com um feitiço; a maioria precisa Realizar um Ritual. Equivalente aos Níveis de Magia 8 e 9 da 5e, mesmo com magia esses feitos geralmente só são ouvidos em histórias e lendas. Exemplos de efeitos incluem: proferir uma palavra de poder proibida que mata alguém instantaneamente ou inflige (1d12+1d10 de dano #perfurante); ressuscitar alguém dos mortos; comunicar-se através do tempo e do espaço; invocar um colosso monstruoso; controlar uma mente alienígena ou protegida; induzir um sono eterno; voar para sempre; criar um item mágico ou Artefato; teletransportar você e seus aliados para qualquer lugar do mundo."
+  ],
+  "id": "magnitude-mag",
+  "group": "Extra Moves"
+ }
+];
+export const CHANGING_CLASSES_PT = [
+ "1. Escolha sua nova Classe.",
+ "2. Distribua seus Atributos como se estivesse criando um novo personagem. Você pode usar seus Atributos antigos como orientação ou ignorá-los completamente e usar esta oportunidade para recomeçar do zero.",
+ "3. Ganhe o Movimento Inicial da sua nova Classe. Perca o da sua Classe antiga.",
+ "4. Redistribua seus Avanços. Conte o número de avanços que você tinha da sua Classe antiga e ganhe o mesmo número na sua nova Classe.",
+ "5. Seu XP, Nível e Trilha de Tesouro permanecem inalterados. 6. Seus PV máx mudam para os da sua nova Classe, modificados pelo seu bônus por Nível (+1 por Nível além do 1º, máx +10). Seus PV atuais sobem ou descem na mesma quantidade (isso não pode reduzi-los abaixo de 1). Por exemplo, Erinyette, a Ladina de nível 5, resolveu sua Provação Redimido e decidiu mudar para a Classe Paladino para representar sua determinação em lutar pelo que é certo. Erinyette tinha 4 Avanços como Ladina. Sua jogadora decide manter a Trilha Assaltante e seu Movimento Inicial, Caçador de Tesouros Especialista, como Multiclasse, mas usará os outros 3 Avanços para melhorar sua SAB, desbloquear a Trilha Inquisidor (seu nêmesis tem devotos ocultos por toda parte) e revelar uma nova Provação: Vingativo."
+];
+export const MOVES = MOVES_PT;
+export const CHANGING_CLASSES = CHANGING_CLASSES_PT;

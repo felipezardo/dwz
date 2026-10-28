@@ -6,7 +6,7 @@ export const box = (k, m, cls = '', attrs = '') => `<input type="checkbox" class
 export const circles = (k, n, m) => Array.from({ length: n }, (_, i) => box(`${k}.${i}`, m, 'circ')).join('');
 export const line = (k, m, ph = '', cls = '') => `<input type="text" class="ln ${cls}" data-k="${k}" value="${esc(m[k] ?? '')}" placeholder="${esc(ph)}" aria-label="${esc(ph || k)}">`;
 
-const TOKEN = /([☐☑▢])|(\bO{1,6}\b(?=\s+uses?\b))|(_{4,})|(✴(?:On|on) a [^\s,;:.]+)|(#[a-z-]+)|\b(dmg|hp|xp|adv|dis|mag|str|dex|int|wis|cha)\b/g;
+const TOKEN = /([☐☑▢])|(\bO{1,6}\b(?=\s+(?:uses?|usos?)\b))|(_{4,})|(✴(?:(?:On|on) a|(?:Com|com|Em|em)(?: um)?) [^\s,;:.]+)|(#[a-zà-ú-]+)|\b(dmg|dano|hp|pv|xp|adv|vant|dis|desv|mag|str|for|dex|des|int|wis|sab|cha|car)\b/g;
 /** Texto do material original -> HTML com caixas, círculos, campos e destaques. */
 export function rich(text, scope, m) {
   let n = 0;
@@ -19,12 +19,12 @@ export function rich(text, scope, m) {
     return `<span class="sc">${sc}</span>`;
   });
 }
-const EFF = /^([A-Z][\w’' &-]*?) ?((?:\([+-]\))+)/;
+const EFF = /^([A-ZÀ-Ú][\wÀ-ÿ’' &-]*?) ?((?:\([+-]\))+)/;
 export function para(text, scope, m) {
   let html = rich(text, scope, m), cls = '';
   if (text.startsWith('◆')) cls = 'bul';
   else if (text.startsWith('▢') || text.startsWith('☐')) cls = 'opt';
-  else if (/^Questions:/.test(text)) html = html.replace('Questions:', '<b>Questions:</b>');
+  else if (/^(Questions|Perguntas):/.test(text)) html = html.replace(/^(Questions|Perguntas):/, '<b>$1:</b>');
   else { const mm = EFF.exec(text); if (mm) html = html.replace(esc(mm[0]), s => `<b class="eff">${s}</b>`); }
   return `<p class="${cls}">${html}</p>`;
 }

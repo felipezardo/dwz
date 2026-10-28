@@ -1,12 +1,18 @@
+import { t } from './i18n.js';
+
 const d6 = () => 1 + Math.floor(Math.random() * 6);
 const PIPS = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
 const face = n => `<div class="pips">${Array.from({ length: 9 }, (_, i) => `<i class="${PIPS[n].includes(i) ? 'on' : ''}"></i>`).join('')}</div>`;
-const tier = t => t >= 10 ? ['10+  Sucesso total', 'hit'] : t >= 7 ? ['7-9  Sucesso parcial', 'mid'] : ['6-  Falha — marque 1 XP e o GM faz um Move', 'miss'];
+const tier = tot => {
+  const ui = t();
+  return tot >= 10 ? [ui.tierHit, 'hit'] : tot >= 7 ? [ui.tierMid, 'mid'] : [ui.tierMiss, 'miss'];
+};
 const history = [];
 export function roll(label, mod, extra = 0, plain = false) {
+  const ui = t();
   const box = document.getElementById('roller'); box.hidden = false; box.className = 'roller';
   const m = mod + extra, sign = v => (v >= 0 ? '+' : '') + v;
-  box.innerHTML = `<button class="x" aria-label="Fechar">×</button><h3>${label} <small>${sign(m)}</small></h3>
+  box.innerHTML = `<button class="x" aria-label="${ui.close}">×</button><h3>${label} <small>${sign(m)}</small></h3>
     <div class="dice"><div class="die spin">${face(6)}</div><div class="die spin">${face(1)}</div></div>
     <div class="total">…</div><div class="out"></div><ol class="hist">${history.map(h => `<li class="${h.c}">${h.l}: ${h.t}</li>`).join('')}</ol>`;
   const dice = [...box.querySelectorAll('.die')];

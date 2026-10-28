@@ -12,12 +12,21 @@
 <body>
 <header class="masthead">
   <div class="logo" aria-label="Dungeon World 2"><svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 1c1 6 8 9 8 18a8 8 0 0 1-16 0c0-4 2-6 3-8 1 2 2 3 3 3 0-5-1-8 2-13Z"/></svg><span>Dungeon<br>World</span><b>2</b></div>
-  <nav aria-label="Personagens">
+  <nav id="topNav" aria-label="Personagens">
     <select id="charSelect" aria-label="Personagem salvo"></select>
-    <button data-act="new">Novo</button>
-    <button data-act="import" class="ghost">Importar</button>
+    <button data-act="new" id="btnNew">Novo</button>
+    <button data-act="import" id="btnImport" class="ghost">Importar</button>
     <button data-act="export" id="exportChar" class="ghost">Exportar</button>
     <button data-act="del" id="delChar" class="ghost">Excluir</button>
+    <button type="button" class="ghost lang-switch" data-act="lang" id="langSwitch" aria-label="Alternar idioma (EN-US / PT-BR)" title="EN-US / PT-BR">
+      <span class="flag" data-lang-flag="en-US" title="English (en-US)">
+        <svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="2" fill="#fff"/><path d="M0 0h28v1.54H0zm0 3.08h28v1.54H0zm0 3.08h28v1.54H0zm0 3.08h28v1.54H0zm0 3.08h28v1.54H0zm0 3.08h28v1.54H0zm0 3.08h28V20H0z" fill="#b22234"/><rect width="12" height="10.77" rx="1" fill="#3c3b6e"/><g fill="#fff"><circle cx="2.2" cy="2" r=".7"/><circle cx="4.7" cy="2" r=".7"/><circle cx="7.2" cy="2" r=".7"/><circle cx="9.7" cy="2" r=".7"/><circle cx="3.4" cy="3.7" r=".7"/><circle cx="6" cy="3.7" r=".7"/><circle cx="8.5" cy="3.7" r=".7"/><circle cx="2.2" cy="5.4" r=".7"/><circle cx="4.7" cy="5.4" r=".7"/><circle cx="7.2" cy="5.4" r=".7"/><circle cx="9.7" cy="5.4" r=".7"/><circle cx="3.4" cy="7.1" r=".7"/><circle cx="6" cy="7.1" r=".7"/><circle cx="8.5" cy="7.1" r=".7"/><circle cx="2.2" cy="8.8" r=".7"/><circle cx="4.7" cy="8.8" r=".7"/><circle cx="7.2" cy="8.8" r=".7"/><circle cx="9.7" cy="8.8" r=".7"/></g></svg>
+      </span>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <span class="flag" data-lang-flag="pt-BR" title="Português (pt-BR)">
+        <svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="2" fill="#009b3a"/><polygon points="14,2.2 25.5,10 14,17.8 2.5,10" fill="#fedf00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/><path d="M10 9.2c2.6-.9 5.5-.6 8 .8" stroke="#fff" stroke-width="1" fill="none"/></svg>
+      </span>
+    </button>
     <input type="file" id="file" accept="application/json" hidden>
   </nav>
 </header>

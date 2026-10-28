@@ -1,5 +1,5 @@
-// GERADO por tools/extract.py a partir dos PDFs oficiais. Não edite à mão.
-export const STRUGGLES = [
+// Dados de Struggles (EN-US e PT-BR)
+export const STRUGGLES_EN = [
  {
   "name": "Betrayed",
   "id": "betrayed",
@@ -282,7 +282,7 @@ export const STRUGGLES = [
   ]
  }
 ];
-export const STRUGGLES_INTRO = [
+export const STRUGGLES_INTRO_EN = [
  "Struggles are powerful narrative aspects of a character that they grapple with over the course of play. All Struggles are, at their heart, a question about who the PC is, what matters to them, and what choices they are willing to make.",
  "By default, each PC can only have one Struggle at a time. If you want to reveal a second Struggle, you must first resolve your current one. When a Struggle is revealed, do each of the following:",
  "◆ Read through the Struggle’s questions and decide which to answer now and which to explore in play.",
@@ -307,3 +307,313 @@ export const STRUGGLES_INTRO = [
  "When your revealed Struggle is resolved, Level Up (without erasing XP), erase the Struggle, and lose its benefits (+) and drawbacks (-). Erase the Reveal a Struggle Advancement box if it was marked; you can choose a new Struggle in the future.",
  "See Reveal Your Struggle in Campaign Moves in the DW2 Beta Quickstart."
 ];
+export const STRUGGLES_PT = [
+ {
+  "name": "Traído",
+  "id": "betrayed",
+  "widgets": [],
+  "tagline": "Alguém muito amado apunhalou você pelas costas, e você nunca mais conseguiu confiar novamente",
+  "body": [
+   "Perguntas: Quem era o traidor para você? Como ele traiu você? Como você pode curar essa ferida?",
+   "Obstinado(+) Você pode sofrer 1d4 de dano #perfurante para ignorar todas as penalidades de Condição na sua próxima rolagem.",
+   "Ferido(+) Quando você Confortar ou Apoiar (ou receber isso), você também pode perguntar: “Eu contei a ele sobre o meu traidor?”. Se “Sim”, quem foi confortado ganha uma opção extra.",
+   "Desconfiado(-) Quando você ganhar Profundidade com outro PJ, marque uma Condição."
+  ]
+ },
+ {
+  "name": "Desiludido",
+  "id": "disillusioned",
+  "widgets": [],
+  "tagline": "Você já foi um verdadeiro crente, um campeão, um modelo de virtude. Não mais Perguntas: Qual era a causa? Que derrota ou revelação mostrou a você a falta de sentido de tudo isso? Há alguma maneira de fazer você acreditar novamente?",
+  "body": [
+   "Cínico (+) Você pode sempre fazer uma pergunta extra quando Sentir Motivação, mesmo com 6-. Você também ganha vant para Desafiar o Perigo quando tentar superar enganações de qualquer tipo.",
+   "Pessimista (-) Quem é confortado ganha uma opção a menos quando você o Confortar ou Apoiar."
+  ]
+ },
+ {
+  "name": "Amnésia",
+  "id": "amnesia",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Memórias",
+    "n": 5
+   }
+  ],
+  "tagline": "Você não tem memória do seu passado. Mas sabe de uma coisa: talvez não queira se lembrar dele.",
+  "body": [
+   "Perguntas: Onde você acordou sem memória? Que lugares, comportamentos ou pessoas parecem familiares? Que nova identidade você está construindo para si?",
+   "Estilhaços (+)(-) Uma vez por sessão, quando você fosse marcar sua última Condição (Atingindo o Limite), você pode em vez disso marcar Memórias e Ter um Flashback. Quando fizer isso, você descobre uma parte importante do seu passado; marque 1 XP e o MJ avança uma Ameaça.",
+   "Quando você alcançar 5 Memórias, o quadro do seu passado está completo; esta Provação é resolvida (veja Revelar uma Provação para detalhes)."
+  ]
+ },
+ {
+  "name": "Covarde",
+  "id": "coward",
+  "widgets": [],
+  "tagline": "A maioria dos aventureiros está acostumada a perigos frequentes e experiências de quase morte. Você não é um deles.",
+  "body": [
+   "Perguntas: Quem você abandonou no passado? Como você tenta combater seus medos? Como você os (super)compensa?",
+   "Arisco (+) Enquanto estiver Assustado, você tem vant em rolagens feitas para fugir ou se esconder do perigo, e marca 1 XP quando faz uma rolagem dessas.",
+   "Cara de Coragem (+) Você pode limpar Assustado ao desferir o golpe final em um inimigo, ou ao assumir o crédito por tal golpe.",
+   "Aterrorizado (-) Quando você marcar Assustado, e quando marcar uma Condição enquanto já estiver Assustado (exceto por este Movimento), marque uma Condição adicional."
+  ]
+ },
+ {
+  "name": "Cuidador",
+  "id": "caretaker",
+  "widgets": [],
+  "tagline": "Você viaja com um PdM que depende de você para auxílio ou orientação Perguntas: Por que essa pessoa depende tanto de você? Ela sabe o quanto você faz por ela? Como ela testa a sua paciência? Maior Fã (+) Quando você der ou receber Confortar ou Apoiar junto do seu dependente, trate um “Não” como se fosse um “Sim”. Guardião (+) Quando você se preocupar com seu dependente, pode marcar uma Condição para fazer ao MJ uma pergunta sobre a localização, atividades ou bem-estar dele, e o MJ responderá com a verdade. Quando Encerrar a Sessão, se sentir que seu dependente fez na maior parte o que você queria, ganhe 1 XP.",
+  "body": [
+   "Problemático (-) Quando você o machucar ou falhar em protegê-lo (a critério do MJ), marque uma Condição."
+  ]
+ },
+ {
+  "name": "Sussurro Sombrio",
+  "id": "dark-whisperer",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Sussurros",
+    "n": 5
+   }
+  ],
+  "tagline": "Uma voz lhe diz verdades que você não poderia saber, e mentiras que você não consegue discernir Perguntas: Como a voz se comunica com você? Sobre qual outro PJ ela o alertou? Como ela ajudou você quando mais ninguém podia?",
+  "body": [
+   "Diabinho no Ombro (+) Seu Sussurro Sombrio é um PdM que mais ninguém consegue perceber e contra o qual você não pode Sentir Motivação. Quando você fizer uma pergunta ao seu Sussurro Sombrio, ele geralmente dirá a verdade ou o que quer que você faça a seguir. Se aceitar as palavras dele, ganhe vant na sua próxima rolagem, mas marque um Sussurro (máx 5). Marionete das Sombras (-) Quando tentar rejeitar as palavras do seu Sussurro Sombrio, role+Sussurros e então apague seus Sussurros. ✴Com 6- você o cala; marque 1 XP. ✴Com 7-9 as palavras dele ecoam na sua mente; marque duas Condições. ✴Com 10+ você obedece a ele, talvez sem perceber; marque XP e o MJ faz um Movimento."
+  ]
+ },
+ {
+  "name": "Herança Perdida",
+  "id": "lost-heritage",
+  "widgets": [],
+  "tagline": "Você procura pelo seu povo (ou pelo que restou dele), perdido há muito tempo para conquistas ou catástrofes",
+  "body": [
+   "Perguntas: Quem ou o que levou seu povo embora? Como você conseguiu escapar e/ou sobreviver? Quem ou o que está impedindo você de descobrir mais?",
+   "Buscador (+) Quando você Desvendar Segredos ou Esgueirar-se em busca de algo ou alguém relacionado ao seu povo, role com vant. Uma vez por sessão, quando encontrar e estudar uma relíquia do seu povo, conte ao grupo o que aprendeu e marque 1 XP. Ferida Aberta (-) Quando encontrar uma parte incompleta e perdida da cultura do seu povo, ou uma relíquia roubada, marque uma Condição."
+  ]
+ },
+ {
+  "name": "Herói do Povo",
+  "id": "folk-hero",
+  "widgets": [],
+  "tagline": "Você salvou uma comunidade humilde sozinho no passado, e alguns agora o veem como um símbolo de esperança",
+  "body": [
+   "Perguntas: Que feito heroico você realizou em sua comunidade? O que você perdeu? Que profecia sobre seu futuro heroico você ouviu?",
+   "Presença Inspiradora (+) Qualquer pessoa que não seja um nobre ou alguém com poder tratará você como família, oferecendo abrigo e quaisquer recursos que tiver. Quando você Trocar Golpes para defender pessoas comuns, ✴Com 10+, você pode fazer outro PJ limpar uma Condição (em vez das outras opções).",
+   "Sobrecarregado (-) Quando você recusar uma chance de ajudar o povo comum, marque uma Condição."
+  ]
+ },
+ {
+  "name": "Condenado",
+  "id": "doomed",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Ruína",
+    "n": 5
+   }
+  ],
+  "tagline": "Uma aflição terrível ceifará sua vida (ou pior), a menos que você encontre uma cura",
+  "body": [
+   "Perguntas: Como você foi afligido? Quais são os sintomas até agora? Que pista duvidosa você tem sobre uma possível cura?",
+   "Dias Bons (+) Quando Encerrar a Sessão, pergunte ao grupo: “Eu descobri mais sobre minha aflição ou fiz progresso notável rumo a uma cura?” Se “Sim”, marque 1 XP, limpe uma Condição e limpe 1 de Ruína. Dias Ruins (-) Se a resposta para a pergunta acima for “Não”, marque 1 de Ruína e uma Condição. A Ruína começa em 0 e representa o avanço da sua aflição. Com 5 de Ruína, é tarde demais para uma cura; sua aflição o ceifará na próxima sessão.",
+   "Assim Não(+) Quando você fosse Encarar a Morte, pode em vez disso Invocar Sua Ruína — diga como sua aflição (ou como os outros a veem) ajuda você a sobreviver, então marque 1 de Ruína e recupere 1 PV."
+  ]
+ },
+ {
+  "name": "Sonhos Agourentos",
+  "id": "ominous-dreams",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Presságio",
+    "n": 3
+   }
+  ],
+  "tagline": "Você começou a ter visões confusas de um perigo iminente ou evento catastrófico",
+  "body": [
+   "Perguntas: Qual aspecto dos seus sonhos proféticos é consistentemente claro? Você sabe quem envia essas visões? Quem próximo a você elas retratam em perigo?",
+   "Eu Já Sabia (+) Quando você terminar de Acampar com sucesso, ganhe Presságio igual à sua SAB. Quando algo terrível acontecer com outro PJ (sua escolha), você pode gastar 1 ou 2 de Presságio para permitir que o jogador dele rerrole esse número de dados após fazer uma rolagem e ver as consequências. O novo resultado é o que realmente acontece. Sem Descanso para Quem Tudo Vê (-) Quando terminar de Acampar com sucesso, você recupera apenas metade da quantidade de PV que normalmente recuperaria (arredondado para baixo)."
+  ]
+ },
+ {
+  "name": "Romance Proibido",
+  "id": "forbidden-romance",
+  "widgets": [],
+  "tagline": "Você e um PdM estão profundamente apaixonados, mas precisam permanecer separados Perguntas: Quem é a pessoa amada? Que obstáculo impossível está no caminho de vocês? Que solução improvável poderia uni-los? O Poder do Amor (+) Uma vez por sessão, quando você compartilhar uma lembrança da pessoa amada com outro PJ, limpe Condições igual à sua Profundidade com ele (mín. 1).",
+  "body": [
+   "Ponto Fraco (-) Quando você receber notícias de que a pessoa amada está em perigo, marque uma Condição, mais outra se não largar tudo imediatamente para ir tentar salvá-la."
+  ]
+ },
+ {
+  "name": "Inocente",
+  "id": "innocent",
+  "widgets": [],
+  "tagline": "Você é novo nessa vida e ainda está descobrindo a si mesmo e ao mundo Perguntas: Qual outro PJ acolheu você primeiro? O que você aceita sem questionar? O que você questiona sem parar?",
+  "body": [
+   "Olhos Brilhantes (+) Uma vez por sessão, quando outro PJ receber Confortar ou Apoiar perto de você, você também pode receber o mesmo número de benefícios (embora possa fazer escolhas diferentes). Impressionável (-) Uma vez por cena, quando você rejeitar as palavras de um PJ ou PdM, marque uma Condição."
+  ]
+ },
+ {
+  "name": "Solitário",
+  "id": "loner",
+  "widgets": [],
+  "tagline": "Você é um renegado incompreendido que não precisa de amigos… certo?",
+  "body": [
+   "Perguntas: Qual é a sua história de fundo (presumivelmente trágica)? Como a última pessoa que se aproximou de você sofreu ou o traiu?",
+   "Fechado (+) Quando você usar ou receber Confortar ou Apoiar, também pode responder “Eu mostrei que realmente me importo?” Se “Sim”, quem foi confortado ganha um benefício como nas outras perguntas. Se “Não”, você marca 1 XP.",
+   "Distante (-) Forjar um Vínculo exige 1 de Profundidade adicional tanto de você quanto do outro PJ."
+  ]
+ },
+ {
+  "name": "Caçado",
+  "id": "hunted",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Alerta",
+    "n": 3
+   }
+  ],
+  "tagline": "Um indivíduo ou organização poderosa está caçando você ativamente Perguntas: Quem lidera a caçada contra você? Como eles quase o capturaram uma vez? O que você sacrificou para escapar deles?",
+  "body": [
+   "Pegue-me Se Puder (+) Quando você fosse marcar uma Condição, pode em vez disso marcar Alerta. Como você deixa evidências da sua presença para trás? Quando Curtir uma Folga, você pode gastar 1 Tesouro para apagar seu Alerta.",
+   "Acerto de Contas (-) Quando você alcançar 3 de Alerta, ou Acampar com 1 ou mais de Alerta, role+Alerta e então apague seu Alerta. ✴Com 10+, caçadores chegam em peso aqui e agora. ✴Com 7-9 caçadores chegam, mas você tem uma chance de agir antes que o avistem. ✴Com 6- caçadores chegam assustadoramente perto de encontrá-lo, mas você escapa; marque 1 XP."
+  ]
+ },
+ {
+  "name": "Endividado",
+  "id": "indebted",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Dívida",
+    "n": 5
+   }
+  ],
+  "tagline": "Você tem uma dívida pesada com pessoas muito perigosas.",
+  "body": [
+   "Perguntas: A quem você deve? O que os torna tão perigosos? Quem ou o que eles tomaram como garantia?",
+   "Cavando Mais Fundo (+) Quando você fosse gastar Tesouro, pode em vez disso marcar uma quantidade igual de Dívida, o que representa cobranças adicionais além do que você devia inicialmente. Você também pode comprar itens acima do seu nível de Riqueza atual marcando 1 de Dívida por nível de diferença. Quando você der ao seu credor algo que ele realmente queira (a critério do MJ), redefina a Dívida para 0.",
+   "Cobradores (-) Depois que você Curtir uma Folga, agentes do seu credor se aproximam; role+Dívida. ✴Com 6- eles só querem lembrá-lo do que deve; marque XP. ✴Com 7-9 eles querem um pequeno favor ou item; marque uma Condição se recusar. ✴Com 10+ eles querem algo grande e estão prontos para forçar sua mão."
+  ]
+ },
+ {
+  "name": "Redimido",
+  "id": "reformed",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Culpa",
+    "n": 3
+   }
+  ],
+  "tagline": "Você fez coisas terríveis no passado e agora busca expiação Perguntas: Qual PJ costumava ser seu inimigo? Quem não acha que você mudou? Do que você mais se arrepende?",
+  "body": [
+   "Assombrado (+)(-) Você começa com 2 de Culpa; marque agora. Quando agir de forma egoísta, você pode marcar Culpa para ganhar vant em uma rolagem. Sempre que tiver menos Condições marcadas+trancadas do que sua Culpa, inclusive quando ganhar esta Provação pela primeira vez, marque imediatamente Condições até que se igualem.",
+   "Reparações (+) Uma vez por sessão, quando ajudar significativamente um PdM (a critério do MJ), limpe 1 de Culpa e uma Condição.",
+   "Retribuição (-) Quando Trocar Golpes com alguém do seu passado sombrio, adicione sua Culpa a todo dano causado a ele."
+  ]
+ },
+ {
+  "name": "Renomado",
+  "id": "renowned",
+  "widgets": [],
+  "tagline": "Histórias de suas façanhas se espalharam por toda parte. Algumas são verdadeiras, outras são descaradamente falsas",
+  "body": [
+   "Perguntas: Como as histórias retratam você? Qual é a parte mais difícil de fazer jus à fama? Qual outro PJ é um coadjuvante frequente? Rumores & Lendas (+)(-) Sua Fama começa em 1. No início de cada sessão, conte ao grupo uma história que alguém ouviu sobre você. Se sua Fama for 2 ou mais, o MJ pode adicionar uma reviravolta ou complicação que outra pessoa ouviu. Quando Encerrar a Sessão, se você fez jus à história (palavra final do MJ), ganhe 1 de Fama (máx 3). Caso contrário, perca 1 de Fama (mín -1) e marque uma Condição.",
+   "Maior que a Vida (-) Quando interagir com o público ou tentar fazer jus à história desta sessão, você pode rolar+Fama em vez de outro atributo. Se fizer isso, ✴com 9 ou menos, você também reduz a Fama em 1."
+  ]
+ },
+ {
+  "name": "Traumatizado",
+  "id": "traumatized",
+  "widgets": [],
+  "tagline": "Seu passado foi sombrio, violento e ainda assombra você. Você foi vítima ou agressor?",
+  "body": [
+   "Perguntas: Qual outro PJ foi afetado pelo seu passado sombrio? Como você se acalma ou lida com o estresse? Que mistério do seu passado nunca foi respondido?",
+   "Não Me Provoque (+) Você tem vant em rolagens destinadas a prevenir ou desescalar diretamente a violência.",
+   "Instintos (-) Uma vez por cena, quando você se machucar ou testemunhar violência inesperada, escolha um instinto abaixo. Até que a violência acabe ou a cena termine, quando você agir de uma forma que não siga esse instinto, marque uma Condição.",
+   "◆ Congelar: parar, encarar, seguir ordens, segurar firme",
+   "◆ Fugir: esconder-se, escapar, correr, fortificar",
+   "◆ Lutar: avançar, atacar, arremessar, destruir"
+  ]
+ },
+ {
+  "name": "Identidade Secreta",
+  "id": "secret-identity",
+  "widgets": [],
+  "tagline": "Você manteve sua verdadeira identidade em segredo esse tempo todo, e as pessoas erradas estão procurando por você",
+  "body": [
+   "Perguntas: Qual é o seu verdadeiro nome e aparência? Quem são “as pessoas erradas”? Para qual esquema nefasto elas querem você? Herdeiro (+) Uma vez por sessão, você pode marcar um dos seguintes para ter acesso temporário a: ☐conhecimento antigo ☐recursos abundantes",
+   "☐tesouro icônico ☐aliados poderosos ☐fonte mágica única. Quando você assumir sua identidade verdadeira, limpe uma das caixas.",
+   "Desmascarado (-) Quando sua verdadeira identidade for revelada a alguém novo, o MJ pode fazer as pessoas erradas receberem notícias suas ou avançar uma Ameaça (a critério do MJ)."
+  ]
+ },
+ {
+  "name": "Vingativo",
+  "id": "vengeful",
+  "widgets": [],
+  "tagline": "Não há justiça neste mundo além daquela que você exercerá contra seu arqui-inimigo",
+  "body": [
+   "Perguntas: Quem é seu arqui-inimigo? O que ele tirou de você? O que está entre você e a satisfação?",
+   "Inabalável (+) Quando você Trocar Golpes com seu arqui-inimigo (ou qualquer pessoa associada a ele), role o dano com vant. Uma vez por sessão, enquanto persegue seu arqui-inimigo, quando você fosse Encarar a Morte, você permanece com 1 PV.",
+   "Consumido (-) Quando você tomar um curso de ação que o afaste da vingança contra seu arqui-inimigo, marque uma Condição."
+  ]
+ },
+ {
+  "name": "Pária",
+  "id": "pariah",
+  "widgets": [],
+  "tagline": "Você é repudiado pela sociedade educada, e a maioria dos que descobrem quem você realmente é o rejeita",
+  "body": [
+   "Perguntas: Que aspecto seu é repudiado? Você esconde esse aspecto ou se deleita nele? Se pudesse, você se livraria dele? Monstro (+) Quando você revelar pela primeira vez seu aspecto repudiado a um PdM, ele fica surpreso por um momento e agora está #amedrontado por você (a critério do MJ). Você ganha vant para Desafiar o Perigo, Manipular ou Trocar Golpes contra qualquer PdM que esteja #amedrontado por você.",
+   "Desgraçado (-) Você tem desv para Desafiar o Perigo, Manipular ou Trocar Golpes contra qualquer PdM que não esteja #amedrontado por você."
+  ]
+ },
+ {
+  "name": "Obsessão por Tesouro",
+  "id": "treasure-obsession",
+  "widgets": [
+   {
+    "type": "circles",
+    "label": "Pistas",
+    "n": 5
+   }
+  ],
+  "tagline": "Você é consumido pela busca de um lendário tesouro perdido, para triunfar onde tantos falharam e morreram",
+  "body": [
+   "Perguntas: Qual é o tesouro e o que as lendas dizem sobre ele? Por que ele é tão importante para você? Quem é um competidor perigoso e mortal por ele?",
+   "No Rastro (+) Uma vez por sessão, depois que você Recordar Conhecimento ou Desvendar Segredos, marque uma Pista para fazer ao MJ uma pergunta sobre o seu tesouro, como: quem o guarda, quem poderia abusar dele ou que maldição ele supostamente coloca em quem o encontra, para citar alguns exemplos. Quando marcar sua 5ª Pista, você pode perguntar ao MJ: onde exatamente posso encontrar meu tesouro?",
+   "Doença do Dragão (-) Você só pode Confortar ou Apoiar (ou receber isso) de outros PJs que prometeram ajudá-lo a obter seu tesouro."
+  ]
+ }
+];
+export const STRUGGLES_INTRO_PT = [
+ "As Provações (Struggles) são poderosos aspectos narrativos de um personagem com os quais ele lida ao longo do jogo. Todas as Provações são, em sua essência, uma questão sobre quem é o PJ, o que importa para ele e que escolhas está disposto a fazer.",
+ "Por padrão, cada PJ só pode ter uma Provação por vez. Se quiser revelar uma segunda Provação, você deve primeiro resolver a atual. Quando uma Provação for revelada, faça cada um dos seguintes:",
+ "◆ Leia as perguntas da Provação e decida quais responder agora e quais explorar durante o jogo.",
+ "◆ Responda a cada pergunta de “agora” e depois colabore com o resto do grupo para encaixar sua resposta na ficção compartilhada. O MJ tem a palavra final sobre o mundo em si, mas deve fazer acomodações razoáveis para cada jogador.",
+ "◆ Ganhe os benefícios (+) e desvantagens (-) da Provação até que ela seja resolvida.",
+ "◆ Limpe uma Condição trancada, se tiver uma.",
+ "Enquanto tiver uma Provação, tente:",
+ "◆ Envolver-se dramaticamente tanto com seus benefícios quanto com suas desvantagens",
+ "◆ Lidar com as escolhas difíceis ou circunstâncias em que ela o coloca",
+ "◆ Explorar novos detalhes ou emoções sobre ela quando apropriado, especialmente quando alguém Confortar ou Apoiar você",
+ "◆ Ponderar uma verdade terrível sobre ela, que pode ser revelada no futuro",
+ "◆ Resolvê-la apenas quando for narrativamente satisfatório",
+ "Quando outro PJ tiver uma Provação, os outros Jogadores devem tentar:",
+ "◆ Fazer seu PJ perguntar e expressar opiniões sobre ela",
+ "◆ Adaptar seu Relacionamento e/ou Vínculo com ele à Provação dele e a como ela afeta a narrativa",
+ "◆ Confortar, apoiar e às vezes desafiá-lo a respeito dela",
+ "◆ Arfar de choque quando uma verdade terrível for confessada",
+ "O MJ deve refletir a Provação de um PJ no mundo ao:",
+ "◆ Torná-la o foco de um obstáculo, perigo ou escolha difícil",
+ "◆ Retratar os benefícios e desvantagens dela sem se conter",
+ "◆ Apresentar oportunidades para resolvê-la quando o momento parecer certo",
+ "Quando sua Provação revelada for resolvida, Suba de Nível (sem apagar XP), apague a Provação e perca seus benefícios (+) e desvantagens (-). Apague a caixa de Avanço Revelar uma Provação se estiver marcada; você poderá escolher uma nova Provação no futuro.",
+ "Veja Revelar Sua Provação em Movimentos de Campanha no Guia Rápido de DW2 Beta."
+];
+export const STRUGGLES = STRUGGLES_PT;
+export const STRUGGLES_INTRO = STRUGGLES_INTRO_PT;
