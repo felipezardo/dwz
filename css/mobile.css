@@ -1,0 +1,56 @@
+/* Responsividade (celulares). Carregue DEPOIS de styles.css. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden}
+.paper,.card,.path,.pmove,.col{min-width:0}
+.paper p,.paper li,.card h3,.pmove h4,.tagline{overflow-wrap:anywhere}
+
+/* Abas: nunca alargam a página; rolam na horizontal se não couberem */
+.tabs{overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-right:.5rem}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}
+
+@media (max-width:1000px){
+  .sheet,.pcols,.pcols.two{grid-template-columns:minmax(0,1fr)}
+  .intro{columns:1}
+  .col+.col{margin-top:.4rem}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .masthead{padding:.7rem .9rem;gap:.6rem}
+  .logo{font-size:1.1rem}.logo b{font-size:2.4rem}
+  nav{width:100%;gap:.4rem}
+  nav select{flex:1 1 100%;max-width:none;width:100%}
+  nav button{flex:1 1 auto;padding:.35rem .6rem;font-size:.95rem}
+  #app{padding:.8rem .5rem 4rem}
+  .tabs{padding-left:.3rem}
+  .tab{padding:.4rem 1rem;font-size:1.05rem}
+  .paper{padding:1.1rem .9rem;margin-bottom:1rem}
+  h1{font-size:2.1rem}.pg{font-size:1.8rem}
+  h2{font-size:1.45rem}h2.grp{font-size:1.6rem}
+  .org .ln{display:block;width:100%;margin-top:.15rem}
+  .ln.blank{width:100%}
+  /* Relationships: nome + relação lado a lado, Depth na linha de baixo */
+  .rel{grid-template-columns:1fr 1fr;gap:.4rem .6rem}
+  .rel .depth{grid-column:1/-1;max-width:none;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:.35rem}
+  .rel .depth small{width:auto;order:-1;margin-right:.2rem}
+  .lvl{flex-wrap:wrap;gap:.6rem 1rem}.xp{margin-left:0}
+  /* Stats: 5 caixas cabem em 320px */
+  .vitals{gap:.35rem}
+  .stat input{font-size:1.4rem}
+  .vitals.low{flex-wrap:wrap;gap:1.4rem .8rem}
+  .conds{flex:1 1 100%;justify-content:space-between;gap:.2rem}
+  .cond .bx{width:1.9rem;height:1.9rem}  /* alvos de toque maiores */
+  .bx{width:1.1rem;height:1.1rem}.bx.circ{width:1.3rem;height:1.3rem}
+  .eqrow{flex-direction:column;gap:.25rem}
+  .card{padding:.8rem .8rem;box-shadow:3px 3px 0 var(--rule)}
+  .card:hover{transform:none;box-shadow:3px 3px 0 var(--rule)}
+  .rolls button,.bar{font-size:1rem}
+  .roller{bottom:.5rem;padding:.8rem}
+  .die{width:3.6rem;height:3.6rem}
+  dialog{width:94vw;padding:1rem}
+  .classes{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .masthead button.lang-switch{flex:0 0 auto;padding:.32rem .5rem}
+  .dlg-actions{flex-wrap:wrap}.dlg-actions button{flex:1 1 auto}
+}
