@@ -19,3 +19,9 @@ tools/extract.py      extrai o texto dos PDFs oficiais para js/data/
 
 ## Deploy (GitHub Pages)
 Suba tudo, depois Settings → Pages → Branch `main` / root. Para testar localmente use um servidor (`npx serve`), pois o projeto usa ES modules.
+
+
+## Novidades
+- **Página inicial** (`#/`): galeria com todas as fichas salvas, ordenadas pela última edição. Cada ficha abre em `#/c/<id>` (o botão Voltar do navegador funciona).
+- **Foto do personagem**: envie um arquivo (reduzido automaticamente para caber no navegador) ou cole o link de uma imagem. Fica salva junto com a ficha e vai no Exportar/Importar.
+- **Mobile**: ficha em uma coluna na ordem de uso (identidade, atributos, Movimento Inicial…), barra de abas inferior, textos com bullets/faixas ✴/caixas em itens separados. O layout de desktop (estilo ficha de papel) não muda.

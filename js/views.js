@@ -1,10 +1,32 @@
 import { t, getData } from './i18n.js';
 import { esc, box, circles, line, rich, para, paras, widgets } from './util.js';
 
+export const SIL = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="34" r="17"/><path d="M16 94c2-24 16-38 34-38s32 14 34 38z"/></svg>';
 export const STATS = ['str', 'dex', 'int', 'wis', 'cha'];
 const CONDS = ['Exhausted', 'Frightened', 'Angry', 'Distracted', 'Insecure'];
 const HEART = '<svg viewBox="0 0 100 92" aria-hidden="true"><path d="M50 88C8 55 2 30 24 16c14-8 26 2 26 12 0-10 12-20 26-12 22 14 16 39-26 72Z"/></svg>';
 const SHIELD = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M8 8h84v44c0 24-20 36-42 44C28 88 8 76 8 52Z"/></svg>';
+
+/* ---------- Retrato ---------- */
+export function portrait(c) {
+  const ui = t(), name = c.marks['f.name'] || ui.unnamed;
+  return `<div class="portrait"><div class="pframe" data-act="photo-up" role="button" tabindex="0" title="${esc(ui.photoUpload)}">${SIL}${c.photo ? `<img src="${esc(c.photo)}" alt="${esc(ui.portraitOf)} ${esc(name)}" referrerpolicy="no-referrer">` : ''}</div>
+    <div class="pbtns"><button type="button" class="mini" data-act="photo-up">${esc(ui.photoUpload)}</button><button type="button" class="mini ghost" data-act="photo-link">${esc(ui.photoLink)}</button>${c.photo ? `<button type="button" class="mini ghost" data-act="photo-del" aria-label="${esc(ui.photoRemove)}" title="${esc(ui.photoRemove)}">×</button>` : ''}</div></div>`;
+}
+
+/* ---------- Início ---------- */
+export function homeView(chars) {
+  const ui = t(), { CLASSES } = getData();
+  const cards = [...chars].sort((a, b) => (b.updated || 0) - (a.updated || 0)).map(c => {
+    const k = CLASSES[c.classId], name = c.marks['f.name'] || ui.unnamed;
+    return `<a class="pcard" href="#/c/${c.id}"><div class="ph">${SIL}${c.photo ? `<img src="${esc(c.photo)}" alt="${esc(ui.portraitOf)} ${esc(name)}" loading="lazy" referrerpolicy="no-referrer">` : ''}</div>
+      <div class="pi"><h3>${esc(name)}</h3><p>${esc(k.title)}</p><div class="st"><span>${esc(ui.level)} ${esc(c.marks['f.level'] ?? 1)}</span><span>${esc(ui.hp)} ${esc(c.marks['f.hp'] ?? '–')}</span></div></div></a>`;
+  }).join('');
+  return `<section class="home"><div class="home-head"><div><h1>${esc(ui.charactersTitle)}</h1><p>${esc(ui.charCount(chars.length))}</p></div>
+    <div class="home-actions"><button data-act="new">${esc(ui.newCharacter)}</button><button class="ghost" data-act="import">${esc(ui.importChar)}</button></div></div>
+    <div class="pgrid"><button class="newcard" data-act="new" aria-label="${esc(ui.newCharacter)}"><b>+</b><span>${esc(ui.newCharacter)}</span></button>${cards}</div>
+    ${chars.length ? '' : `<p class="home-empty">${esc(ui.homeEmpty)}</p>`}</section>`;
+}
 
 /* ---------- Ficha (playbook) ---------- */
 export function sheetView(c) {
@@ -22,35 +44,42 @@ export function sheetView(c) {
     ? `<div class="eqrow">${row.map((o, oi) => `<span class="eq">${box(`eq.${gi}.${ri}.${oi}.c`, m, '', `data-grp="eq${gi}.${ri}"`)}<span>${rich(o, `eq.${gi}.${ri}.${oi}.t`, m)}</span></span>`).join('')}</div>`
     : `<div class="eq">${box(`eq.${gi}.${ri}.0.c`, m, '', g.exclusive ? `data-grp="eq${gi}"` : '')}<span>${rich(row[0], `eq.${gi}.${ri}.0.t`, m)}</span></div>`).join('')).join('');
   const adv = k.advancements.map((a, ai) => `<p class="advt">${esc(a.title)}</p>` + a.options.map((o, oi) =>
-    `<div class="adv">${o.boxes ? Array.from({ length: o.boxes }, (_, b) => box(`adv.${ai}.${oi}.${b}`, m)).join('') : '<span class="dia">◆</span>'}<span>${rich(o.text, `adv.${ai}.${oi}.t`, m)}</span></div>`).join('')).join('');
+    `<div class="adv"><span class="bxs">${o.boxes ? Array.from({ length: o.boxes }, (_, b) => box(`adv.${ai}.${oi}.${b}`, m)).join('') : '<span class="dia">◆</span>'}</span><span>${rich(o.text, `adv.${ai}.${oi}.t`, m)}</span></div>`).join('')).join('');
   const stats = STATS.map(s => {
     const lbl = ui.stats[s];
     return `<div class="stat"><button class="statlbl" data-roll="${s}" title="${esc(ui.rollStatTitle(lbl))}">${esc(lbl)}</button><input type="number" data-k="s.${s}" value="${esc(m['s.' + s] ?? '')}" aria-label="${esc(lbl)}"></div>`;
   }).join('');
   const conds = CONDS.map(n => `<label class="cond">${box(`c.${n}`, m, 'circ')}<i>${esc(ui.conds[n])}</i></label>`).join('');
+  const spell = k.spellEffects ? `<div class="blk b-spell"><h2 class="sm">${esc(ui.spellEffects)}</h2><p class="ex">${esc(k.spellEffects.join(' ')).replace(/(Craft|Law|Light|Nature|Travel|Ofício|Lei|Luz|Natureza|Viagem):/g, '<b>$1:</b>')}</p></div>` : '';
   return `<div class="paper sheet">
-  <section class="col"><h1>${esc(k.title)}</h1><p class="tagline">${esc(k.tagline)}</p>
-    <h2>${esc(ui.origins)}</h2>${origins}<h2>${esc(ui.relationships)}</h2>${rels}
-    <h2 class="sm">${esc(ui.relExamples)}</h2><p class="ex">${esc(k.relationshipExamples)}</p>
-    <h2 class="sm">${esc(ui.treasureTrack)}</h2><p class="tt">${rich(k.treasure.track, 'tt', m)}</p><p class="ex">${esc(k.treasure.note)}</p>
-    ${k.spellEffects ? `<h2 class="sm">${esc(ui.spellEffects)}</h2><p class="ex">${esc(k.spellEffects.join(' ')).replace(/(Craft|Law|Light|Nature|Travel|Ofício|Lei|Luz|Natureza|Viagem):/g, '<b>$1:</b>')}</p>` : ''}
-    <h2 class="sm">${esc(ui.notes)}</h2><textarea data-k="notes" rows="5" aria-label="${esc(ui.notes)}">${esc(m.notes ?? '')}</textarea></section>
-  <section class="col"><h2>${esc(ui.startingMove)}</h2><h3 class="mvname">${esc(sm.name)}</h3>${paras(sm.body, 'sm', m)}${deity}${widgets(sm.widgets, 'sm', m)}
-    <h2>${esc(ui.eqAndApp)}</h2>${eq}</section>
-  <section class="col"><div class="id"><label>${line('f.name', m, ui.name, 'big')}<small>${esc(ui.name)}</small></label><label>${line('f.pron', m, ui.pronouns)}<small>${esc(ui.andPronouns)}</small></label>
-    <p class="ex">${esc(k.nameExamples)}</p></div>
-    <div class="lvl"><label><b>${esc(ui.level)}</b> <input type="number" class="ln" min="1" data-k="f.level" value="${esc(m['f.level'] ?? 1)}"></label><span class="xp"><b>XP</b> ${circles('f.xp', 5, m)}</span></div>
-    <h2>${esc(ui.statsAndHp)}</h2><p class="ex">${esc(k.statRule)}</p>
-    <div class="vitals"><div class="heart">${HEART}<input type="number" data-k="f.hp" value="${esc(m['f.hp'] ?? '')}" aria-label="${esc(ui.hp)}"><small>${esc(ui.hp)}</small></div>${stats}</div>
-    <div class="vitals low"><div class="shield">${SHIELD}<input type="number" data-k="f.armor" value="${esc(m['f.armor'] ?? '')}" aria-label="${esc(ui.armor)}"><small>${esc(ui.armor)}</small></div><div class="conds">${conds}</div></div>
-    <h2>${esc(ui.advancements)}</h2>${adv}</section></div>
+  <section class="col col-a">
+    <div class="blk b-title"><h1>${esc(k.title)}</h1><p class="tagline">${esc(k.tagline)}</p></div>
+    <div class="blk b-origins"><h2>${esc(ui.origins)}</h2>${origins}</div>
+    <div class="blk b-rel"><h2>${esc(ui.relationships)}</h2>${rels}</div>
+    <div class="blk b-examples"><h2 class="sm">${esc(ui.relExamples)}</h2><p class="ex">${esc(k.relationshipExamples)}</p></div>
+    <div class="blk b-treasure"><h2 class="sm">${esc(ui.treasureTrack)}</h2><p class="tt">${rich(k.treasure.track, 'tt', m)}</p><p class="ex">${esc(k.treasure.note)}</p></div>
+    ${spell}
+    <div class="blk b-notes"><h2 class="sm">${esc(ui.notes)}</h2><textarea data-k="notes" rows="5" aria-label="${esc(ui.notes)}">${esc(m.notes ?? '')}</textarea></div></section>
+  <section class="col col-b">
+    <div class="blk b-sm"><h2>${esc(ui.startingMove)}</h2><h3 class="mvname">${esc(sm.name)}</h3>${paras(sm.body, 'sm', m)}${deity}${widgets(sm.widgets, 'sm', m)}</div>
+    <div class="blk b-eq"><h2>${esc(ui.eqAndApp)}</h2>${eq}</div></section>
+  <section class="col col-c">
+    <div class="blk b-id"><div class="idrow">${portrait(c)}<div class="id"><label>${line('f.name', m, ui.name, 'big')}<small>${esc(ui.name)}</small></label><label>${line('f.pron', m, ui.pronouns)}<small>${esc(ui.andPronouns)}</small></label></div></div>
+      <p class="ex">${esc(k.nameExamples)}</p>
+      <div class="lvl"><label><b>${esc(ui.level)}</b> <input type="number" class="ln" min="1" data-k="f.level" value="${esc(m['f.level'] ?? 1)}"></label><span class="xp"><b>XP</b> ${circles('f.xp', 5, m)}</span></div></div>
+    <div class="blk b-vitals"><h2>${esc(ui.statsAndHp)}</h2><p class="ex">${esc(k.statRule)}</p>
+      <div class="vit"><div class="heart">${HEART}<input type="number" data-k="f.hp" value="${esc(m['f.hp'] ?? '')}" aria-label="${esc(ui.hp)}"><small>${esc(ui.hp)}</small></div>
+        <div class="statrow">${stats}</div>
+        <div class="low"><div class="shield">${SHIELD}<input type="number" data-k="f.armor" value="${esc(m['f.armor'] ?? '')}" aria-label="${esc(ui.armor)}"><small>${esc(ui.armor)}</small></div><div class="conds">${conds}</div></div></div></div>
+    <div class="blk b-adv"><h2>${esc(ui.advancements)}</h2>${adv}</div></section></div>
   <div class="paper paths"><h1 class="pg">${esc(ui.pathsTitle(k.title))}</h1><div class="pcols">${k.paths.map((p, pi) => `
     <article class="path"><header>${box(`pa.${pi}`, m)}<div><h3>${esc(p.name)}</h3><p class="tagline">${esc(p.tagline)}</p></div></header>
     ${p.moves.map((mv, mi) => `<div class="pmove ${mv.first ? 'first' : ''}"><h4>${mv.first ? '<span class="chk" aria-hidden="true"></span>' : box(`pa.${pi}.${mi}`, m)}<span>${esc(mv.name)}</span></h4>${paras(mv.body, `pa.${pi}.${mi}`, m)}${widgets(mv.widgets, `pa.${pi}.${mi}`, m)}</div>`).join('')}
     ${widgets(p.widgets, `pa.${pi}`, m)}</article>`).join('')}</div></div>
   <div class="paper picked"><h1 class="pg">${esc(ui.struggleAndBonds)}</h1><div class="pcols">
     <div><h2>${esc(ui.struggle)}</h2>${c.struggle ? struggleCard(STRUGGLES.find(s => s.id === c.struggle), m) : `<p class="empty">${esc(ui.emptyStruggle)}</p>`}</div>
-    <div class="span2"><h2>${esc(ui.bonds)}</h2><div class="pcols two">${c.bonds.length ? c.bonds.map(id => bondCard(BONDS.find(b => b.id === id), m)).join('') : `<p class="empty">${esc(ui.emptyBonds)}</p>`}</div></div></div></div>`;
+    <div class="span2"><h2>${esc(ui.bonds)}</h2><div class="pcols two">${c.bonds.length ? c.bonds.map(id => bondCard(BONDS.find(b => b.id === id), m)).join('') : `<p class="empty">${esc(ui.emptyBonds)}</p>`}</div></div></div></div>
+  <div class="mob-actions"><h2>${esc(ui.manage)}</h2><div><button data-act="export">${esc(ui.exportBtn)}</button><button class="ghost" data-act="del">${esc(ui.delBtn)}</button></div></div>`;
 }
 
 /* ---------- Struggles ---------- */

@@ -7,10 +7,11 @@ export const circles = (k, n, m) => Array.from({ length: n }, (_, i) => box(`${k
 export const line = (k, m, ph = '', cls = '') => `<input type="text" class="ln ${cls}" data-k="${k}" value="${esc(m[k] ?? '')}" placeholder="${esc(ph)}" aria-label="${esc(ph || k)}">`;
 
 const TOKEN = /([☐☑▢])|(\bO{1,6}\b(?=\s+(?:uses?|usos?)\b))|(_{4,})|(✴(?:(?:On|on) a|(?:Com|com|Em|em)(?: um)?) [^\s,;:.]+)|(#[a-zà-ú-]+)|\b(dmg|dano|hp|pv|xp|adv|vant|dis|desv|mag|str|for|dex|des|int|wis|sab|cha|car)\b/g;
-/** Texto do material original -> HTML com caixas, círculos, campos e destaques. */
+/** Texto do material original -> HTML com caixas, círculos, campos e destaques.
+ *  Bullets ◆, faixas ✴ e listas de caixas viram spans (inline no desktop, blocos no mobile). */
 export function rich(text, scope, m) {
   let n = 0;
-  return esc(text).replace(TOKEN, (all, bx, uses, blank, tier, tag, sc) => {
+  const tok = s => esc(s).replace(TOKEN, (all, bx, uses, blank, tier, tag, sc) => {
     if (bx) return box(`${scope}.${n++}`, m, bx === '▢' ? 'sub' : '');
     if (uses) return `<span class="uses">${circles(`${scope}.${n++}`, uses.length, m)}</span>`;
     if (blank) return line(`${scope}.${n++}`, m, '', 'blank');
@@ -18,6 +19,21 @@ export function rich(text, scope, m) {
     if (tag) return `<span class="tag">${tag}</span>`;
     return `<span class="sc">${sc}</span>`;
   });
+  const boxes = s => (s.match(/[☐▢☑]/g) || []).length >= 3 && scope !== 'tt'
+    ? s.split(/(?=[☐▢☑])/).map((p, i) => i || /^[☐▢☑]/.test(p) ? `<span class="oi">${tok(p)}</span>` : tok(p)).join('') : tok(s);
+  const tiers = s => {            // ✴ só abre um bloco quando começa uma frase (resultado da rolagem), não em menções no meio do texto
+    if (!/✴/.test(s)) return boxes(s);
+    const blocks = [];
+    for (const p of s.split(/(?=✴)/)) {
+      const prev = blocks[blocks.length - 1];
+      if (p.startsWith('✴') && (!prev || /[.!?:;)]\s*$/.test(prev.t))) blocks.push({ t: p, blk: true });
+      else if (prev) prev.t += p; else blocks.push({ t: p });
+    }
+    return blocks.map(b => b.blk ? `<span class="tl">${boxes(b.t)}</span>` : boxes(b.t)).join('');
+  };
+  const parts = text.split(/\s*◆\s*/);
+  const cut = p => { const x = /[.!?:;)]\s+(?=✴)/.exec(p); return x ? [p.slice(0, x.index + x[0].length), p.slice(x.index + x[0].length)] : [p, '']; };
+  return parts.length > 1 ? parts.map((p, i) => { if (!i) return tiers(p); const [a, b] = cut(p); return `<span class="ibl">◆ ${tiers(a)}</span>${b ? tiers(b) : ''}`; }).join('') : tiers(text);
 }
 const EFF = /^([A-ZÀ-Ú][\wÀ-ÿ’' &-]*?) ?((?:\([+-]\))+)/;
 export function para(text, scope, m) {
