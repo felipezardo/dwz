@@ -68,7 +68,7 @@ export function sheetView(c) {
       <p class="ex">${esc(k.nameExamples)}</p>
       <div class="lvl"><label><b>${esc(ui.level)}</b> <input type="number" class="ln" min="1" data-k="f.level" value="${esc(m['f.level'] ?? 1)}"></label><span class="xp"><b>XP</b> ${circles('f.xp', 5, m)}</span></div></div>
     <div class="blk b-vitals"><h2>${esc(ui.statsAndHp)}</h2><p class="ex">${esc(k.statRule)}</p>
-      <div class="vit"><div class="heart">${HEART}<input type="number" data-k="f.hp" value="${esc(m['f.hp'] ?? '')}" aria-label="${esc(ui.hp)}"><small>${esc(ui.hp)}</small></div>
+      <div class="vit"><div class="hpctl"><button type="button" class="hpbtn" data-hp="-1" aria-label="${esc(ui.hpDown)}" title="${esc(ui.hpDown)}">−</button><div class="heart">${HEART}<input type="number" data-k="f.hp" value="${esc(m['f.hp'] ?? '')}" aria-label="${esc(ui.hp)}"><small>${esc(ui.hp)}</small></div><button type="button" class="hpbtn" data-hp="1" aria-label="${esc(ui.hpUp)}" title="${esc(ui.hpUp)}">+</button></div>
         <div class="statrow">${stats}</div>
         <div class="low"><div class="shield">${SHIELD}<input type="number" data-k="f.armor" value="${esc(m['f.armor'] ?? '')}" aria-label="${esc(ui.armor)}"><small>${esc(ui.armor)}</small></div><div class="conds">${conds}</div></div></div></div>
     <div class="blk b-adv"><h2>${esc(ui.advancements)}</h2>${adv}</div></section></div>

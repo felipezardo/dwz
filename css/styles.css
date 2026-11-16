@@ -90,7 +90,7 @@ textarea{width:100%;border:1px solid var(--rule);background:repeating-linear-gra
 /* vitais */
 .vit{display:grid;gap:.6rem;margin:.6rem 0}
 .statrow{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;align-items:end}
-.vit .heart{justify-self:start;margin-bottom:1.3rem}
+.vit .hpctl{justify-self:start;margin-bottom:1.3rem}
 .vit .low{display:flex;gap:.8rem;align-items:center;margin-top:1.8rem}
 .heart,.shield{position:relative;width:5.4rem;height:5rem;text-align:center}
 .shield{width:4.6rem;height:4.6rem}
@@ -223,3 +223,16 @@ button.mini{flex:1;padding:.15rem .3rem;font-size:.85rem;letter-spacing:.02em;wh
 .pbtns button.mini:first-child{flex:1 1 100%}
 .pbtns button.mini{min-width:0}
 .b-vitals{padding-bottom:1.3rem}
+
+/* controle de PV: − coração + (mesma linguagem das caixas de atributo) */
+.hpctl{display:flex;align-items:center;gap:.7rem}
+.hpbtn{width:2.3rem;height:2.3rem;padding:0;display:grid;place-items:center;background:transparent;color:var(--ink);border:2px solid var(--ink);font:700 1.6rem/1 var(--display);transition:background .15s,color .15s,transform .15s,box-shadow .15s}
+.hpbtn:hover:not(:disabled){background:var(--ink);color:var(--paper);transform:translateY(-2px) rotate(-3deg);box-shadow:0 3px 0 var(--ember)}
+.hpbtn[data-hp="-1"]:hover:not(:disabled){box-shadow:0 3px 0 var(--miss)}
+.hpbtn[data-hp="1"]:hover:not(:disabled){box-shadow:0 3px 0 var(--hit)}
+.hpbtn:active:not(:disabled){transform:scale(.92);box-shadow:none}
+.heart.heal svg{animation:heal .5s ease-out}
+.heart.hurt{animation:hurt .4s ease-out}.heart.hurt svg{animation:hurtfill .5s ease-out}
+@keyframes heal{40%{fill:#2c6a3a55;transform:scale(1.14)}}
+@keyframes hurt{25%{transform:translateX(-4px)}60%{transform:translateX(3px)}}
+@keyframes hurtfill{30%{fill:#9b2a2255}}

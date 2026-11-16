@@ -75,12 +75,23 @@ function setPhoto(c, value) {
   const p = document.querySelector('.portrait'); if (p) p.outerHTML = portrait(c);
 }
 
+/* ---------- PV: botões − / + ---------- */
+function stepHp(c, d) {
+  const now = Math.max(0, parseInt(c.marks['f.hp'], 10) || 0), next = Math.max(0, now + d);
+  if (next === now) return;
+  c.marks['f.hp'] = String(next); c.updated = Date.now(); persist();
+  const heart = document.querySelector('.heart'); if (!heart) return;
+  heart.querySelector('input').value = next;
+  heart.classList.remove('heal', 'hurt'); void heart.offsetWidth; heart.classList.add(d > 0 ? 'heal' : 'hurt');
+}
+
 /* ---------- Eventos ---------- */
 document.addEventListener('click', e => {
   const c = cur(), { CLASSES } = getData(), ui = t();
-  const tEl = e.target.closest('[data-tab],[data-roll],[data-move],[data-class],[data-act]');
+  const tEl = e.target.closest('[data-tab],[data-roll],[data-move],[data-class],[data-act],[data-hp]');
   if (!tEl) return;
   const act = tEl.dataset.act;
+  if (tEl.dataset.hp) { if (c) stepHp(c, +tEl.dataset.hp); return; }
   if (act === 'lang') {
     const flag = e.target.closest('[data-lang-flag]')?.dataset.langFlag, cl = getLang();
     setLang(flag && flag !== cl ? flag : (cl === 'pt-BR' ? 'en-US' : 'pt-BR'));

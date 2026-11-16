@@ -21,6 +21,8 @@ export const UI = {
   'pt-BR': {
     pageTitle: 'Dungeon World 2 — Fichas',
     home: 'Início',
+    hpDown: 'Diminuir PV',
+    hpUp: 'Aumentar PV',
     charactersTitle: 'Meus personagens',
     charCount: n => `${n} ${n === 1 ? 'ficha' : 'fichas'}`,
     newCharacter: 'Novo personagem',
@@ -102,6 +104,8 @@ export const UI = {
   'en-US': {
     pageTitle: 'Dungeon World 2 — Character Sheets',
     home: 'Home',
+    hpDown: 'Decrease HP',
+    hpUp: 'Increase HP',
     charactersTitle: 'My characters',
     charCount: n => `${n} ${n === 1 ? 'sheet' : 'sheets'}`,
     newCharacter: 'New character',
