@@ -74,7 +74,8 @@ export const CLASSES_EN = {
       "trap kit OO uses. When you spend time setting up a trap, mark once to create a dangerous, impeding hazard for anyone in its range; it typically deals 1d4 dmg"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -420,7 +421,8 @@ export const CLASSES_EN = {
       "provisions OOO uses. Mark once while you Comfort or Support to turn a “No” into a “Yes”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -770,7 +772,8 @@ export const CLASSES_EN = {
       "provisions OOO uses. Mark once while you Comfort or Support to turn a “No” into a “Yes”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -1105,7 +1108,8 @@ export const CLASSES_EN = {
       "provisions OOO uses. Mark once while you Comfort or Support to turn a “No” into a “Yes”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -1454,9 +1458,7 @@ export const CLASSES_EN = {
       "adventuring gear OOO uses. Mark to rummage through and find a useful mundane item"
      ],
      [
-      "breastplate dmg reduction 2 (reduces dmg taken by 2, to a min of 1) req. STR+2, or"
-     ],
-     [
+      "breastplate dmg reduction 2 (reduces dmg taken by 2, to a min of 1) req. STR+2, or",
       "studded leather dmg reduction 1 (reduces dmg taken by 1, to a min of 1). req. STR+1"
      ],
      [
@@ -1469,7 +1471,8 @@ export const CLASSES_EN = {
       "shield O use. Mark to ignore all dmg from one attack"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -1821,7 +1824,8 @@ export const CLASSES_EN = {
       "provisions OOO uses. Mark once while you Comfort or Support to turn a “No” into a “Yes”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -2171,7 +2175,8 @@ export const CLASSES_EN = {
       "trap kit OO uses. When you spend time setting up a trap, mark once to create a dangerous, impeding hazard for anyone in its range; it typically deals 1d4 dmg"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -2509,14 +2514,20 @@ export const CLASSES_EN = {
     "title": "Choose an additional weapon (or create a new one with the GM):",
     "rows": [
      [
-      "collapsible shortbow 1d6 dmg #ammo #close #near #precise #two- handed"
+      "collapsible shortbow 1d6 dmg #ammo #close #near #precise #two-handed"
      ],
      [
       "hidden daggers 1d4 dmg #ammo #concealed #hand #close #light #piercing #precise, adv on dmg rolls"
      ],
      [
-      "reliable whip 1d4 dmg #close #near #precise. When you Trade Blows, ✴On a 10+, you can choose to have the target drop something they’re holding, or grab one of their extremities Choose two of the items below:"
-     ],
+      "reliable whip 1d4 dmg #close #near #precise. When you Trade Blows, ✴On a 10+, you can choose to have the target drop something they’re holding, or grab one of their extremities"
+     ]
+    ],
+    "exclusive": true
+   },
+   {
+    "title": "Choose two of the items below:",
+    "rows": [
      [
       "adventuring gear OOO uses. Mark to rummage through and find a useful mundane item"
      ],
@@ -2533,7 +2544,8 @@ export const CLASSES_EN = {
       "thieves’ tools OOO uses. When you Defy Danger with a Roguish Skill, ✴on a 7-9 you may mark a use instead of another option"
      ]
     ],
-    "exclusive": true
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -2875,7 +2887,7 @@ export const CLASSES_EN = {
       "bag of books OOO uses. Mark to find a record of relevant information"
      ],
      [
-      "dagger 1 d4 dmg #ammo #hand #close #piercing #precise"
+      "dagger 1d4 dmg #ammo #hand #close #piercing #precise"
      ],
      [
       "potion of healing O use. Mark to recover half your max HP (rounded down) or clear a locked Condition"
@@ -2884,7 +2896,8 @@ export const CLASSES_EN = {
       "provisions OOO uses. Mark once while you Comfort or Support to turn a “No” into a “Yes”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "For your appearance, choose one per row (or something else):",
@@ -3213,7 +3226,8 @@ export const CLASSES_PT = {
       "kit de armadilhas OO usos. Quando passar um tempo montando uma armadilha, marque uma vez para criar um perigo impeditivo para qualquer um no alcance; geralmente causa 1d4 de dano"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -3562,7 +3576,8 @@ export const CLASSES_PT = {
       "provisões OOO usos. Marque uma vez enquanto Confortar ou Apoiar para transformar um “Não” em um “Sim”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -3915,7 +3930,8 @@ export const CLASSES_PT = {
       "provisões OOO usos. Marque uma vez enquanto Confortar ou Apoiar para transformar um “Não” em um “Sim”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -4253,7 +4269,8 @@ export const CLASSES_PT = {
       "provisões OOO usos. Marque uma vez enquanto Confortar ou Apoiar para transformar um “Não” em um “Sim”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -4605,9 +4622,7 @@ export const CLASSES_PT = {
       "equipamento de aventura OOO usos. Marque para vasculhar e encontrar um item mundano útil"
      ],
      [
-      "peitoral de aço redução de dano 2 (reduz o dano sofrido em 2, até o mín de 1) req. FOR+2, ou"
-     ],
-     [
+      "peitoral de aço redução de dano 2 (reduz o dano sofrido em 2, até o mín de 1) req. FOR+2, ou",
       "couro batido redução de dano 1 (reduz o dano sofrido em 1, até o mín de 1) req. FOR+1"
      ],
      [
@@ -4620,7 +4635,8 @@ export const CLASSES_PT = {
       "escudo O uso. Marque para ignorar todo o dano de um ataque"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -4975,7 +4991,8 @@ export const CLASSES_PT = {
       "provisões OOO usos. Marque uma vez enquanto Confortar ou Apoiar para transformar um “Não” em um “Sim”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -5328,7 +5345,8 @@ export const CLASSES_PT = {
       "kit de armadilhas OO usos. Quando passar um tempo montando uma armadilha, marque uma vez para criar um perigo impeditivo para qualquer um no alcance; geralmente causa 1d4 de dano"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -5675,8 +5693,14 @@ export const CLASSES_PT = {
       "adagas ocultas 1d4 de dano #munição #oculta #toque #curto #leve #perfurante #precisa, vant nas rolagens de dano"
      ],
      [
-      "chicote confiável 1d4 de dano #curto #próximo #precisa. Quando você Trocar Golpes, ✴Com 10+, pode escolher fazer o alvo largar algo que esteja segurando ou agarrar uma de suas extremidades Escolha dois dos itens abaixo:"
-     ],
+      "chicote confiável 1d4 de dano #curto #próximo #precisa. Quando você Trocar Golpes, ✴Com 10+, pode escolher fazer o alvo largar algo que esteja segurando ou agarrar uma de suas extremidades"
+     ]
+    ],
+    "exclusive": true
+   },
+   {
+    "title": "Escolha dois dos itens abaixo:",
+    "rows": [
      [
       "equipamento de aventura OOO usos. Marque para vasculhar e encontrar um item mundano útil"
      ],
@@ -5693,7 +5717,8 @@ export const CLASSES_PT = {
       "ferramentas de ladrão OOO usos. Quando Desafiar o Perigo com uma Habilidade Ladina, ✴com 7-9 você pode marcar um uso em vez de outra opção"
      ]
     ],
-    "exclusive": true
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",
@@ -6047,7 +6072,8 @@ export const CLASSES_PT = {
       "provisões OOO usos. Marque uma vez enquanto Confortar ou Apoiar para transformar um “Não” em um “Sim”"
      ]
     ],
-    "exclusive": false
+    "exclusive": false,
+    "limit": 2
    },
    {
     "title": "Para sua aparência, escolha um por linha (ou outra coisa):",

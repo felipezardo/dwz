@@ -238,3 +238,9 @@ button.mini{flex:1;padding:.15rem .3rem;font-size:.85rem;letter-spacing:.02em;wh
 @keyframes hurtfill{30%{fill:#9b2a2255}}
 
 .exlist .ibl{display:inline}
+
+/* equipamento: contador "Escolha dois" e pares "um ou outro" */
+.eqcount{font:700 .95rem var(--display);margin-left:.4rem;padding:0 .4rem;border:1.5px solid var(--ink);border-radius:1rem;white-space:nowrap}
+.eqgroup.full .eqcount{background:var(--miss);border-color:var(--miss);color:#fff}
+.eqgroup.full{animation:shake .4s}
+.eqrow.alt{flex-direction:column;gap:.25rem;border-left:3px double var(--ink);padding-left:.6rem;margin:.4rem 0}

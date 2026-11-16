@@ -40,9 +40,15 @@ export function sheetView(c) {
     `<div class="rel">${line(`rel.${i}.pc`, m, ui.pcName)}${line(`rel.${i}.r`, m, ui.relationship)}<span class="depth">${circles(`rel.${i}.d`, 3, m)}<small>${esc(ui.depth)}</small></span></div>`).join('');
   const sm = k.startingMove;
   const deity = k.deity ? `<div class="rel deity">${line('deity.name', m, ui.deityName)}${line('deity.rel', m, ui.relationship)}<span class="depth">${circles('deity.d', 3, m)}<small>${esc(ui.depth)}</small></span></div>` : '';
-  const eq = k.equipment.map((g, gi) => `<p class="gt">${esc(g.title)}</p>` + g.rows.map((row, ri) => row.length > 1
-    ? `<div class="eqrow">${row.map((o, oi) => `<span class="eq">${box(`eq.${gi}.${ri}.${oi}.c`, m, '', `data-grp="eq${gi}.${ri}"`)}<span>${rich(o, `eq.${gi}.${ri}.${oi}.t`, m)}</span></span>`).join('')}</div>`
-    : `<div class="eq">${box(`eq.${gi}.${ri}.0.c`, m, '', g.exclusive ? `data-grp="eq${gi}"` : '')}<span>${rich(row[0], `eq.${gi}.${ri}.0.t`, m)}</span></div>`).join('')).join('');
+  const rowOn = (gi, ri, row) => row.some((_, oi) => m[`eq.${gi}.${ri}.${oi}.c`]);
+  const eq = k.equipment.map((g, gi) => {
+    const lim = g.limit ? n => `data-lim="eq${gi}" data-limn="${g.limit}" data-row="${n}"` : () => '';
+    const count = g.limit ? ` <span class="eqcount" data-count="eq${gi}" aria-live="polite">${g.rows.filter((r, ri) => rowOn(gi, ri, r)).length}/${g.limit}</span>` : '';
+    const alt = !/appearance|aparência/i.test(g.title);                       // linha com 2+ opções fora da aparência = "um ou outro"
+    return `<div class="eqgroup"><p class="gt">${esc(g.title)}${count}</p>` + g.rows.map((row, ri) => row.length > 1
+      ? `<div class="eqrow ${alt ? 'alt' : ''}">${row.map((o, oi) => `<span class="eq">${box(`eq.${gi}.${ri}.${oi}.c`, m, '', `data-grp="eq${gi}.${ri}" ${lim(ri)}`)}<span>${rich(o, `eq.${gi}.${ri}.${oi}.t`, m)}</span></span>`).join('')}</div>`
+      : `<div class="eq">${box(`eq.${gi}.${ri}.0.c`, m, '', `${g.exclusive ? `data-grp="eq${gi}"` : ''} ${lim(ri)}`)}<span>${rich(row[0], `eq.${gi}.${ri}.0.t`, m)}</span></div>`).join('') + '</div>';
+  }).join('');
   const adv = k.advancements.map((a, ai) => `<p class="advt">${esc(a.title)}</p>` + a.options.map((o, oi) =>
     `<div class="adv"><span class="bxs">${o.boxes ? Array.from({ length: o.boxes }, (_, b) => box(`adv.${ai}.${oi}.${b}`, m)).join('') : '<span class="dia">◆</span>'}</span><span>${rich(o.text, `adv.${ai}.${oi}.t`, m)}</span></div>`).join('')).join('');
   const stats = STATS.map(s => {

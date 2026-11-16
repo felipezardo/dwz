@@ -133,8 +133,21 @@ document.addEventListener('input', e => {
   c.marks[tEl.dataset.k] = tEl.type === 'checkbox' ? tEl.checked : tEl.value;
   if (tEl.type === 'checkbox' && tEl.checked && tEl.dataset.grp)       // escolha única dentro do grupo
     document.querySelectorAll(`[data-grp="${tEl.dataset.grp}"]`).forEach(o => { if (o !== tEl && o.checked) { o.checked = false; c.marks[o.dataset.k] = false; } });
+  if (tEl.dataset.lim) limitPicks(tEl, c);
   c.updated = Date.now(); persist();
 });
+
+/* "Escolha dois…": no máximo N linhas marcadas por grupo (opções "A ou B" na mesma linha contam como uma) */
+function limitPicks(tEl, c) {
+  const grp = [...document.querySelectorAll(`[data-lim="${tEl.dataset.lim}"]`)], limit = +tEl.dataset.limn;
+  const rows = () => new Set(grp.filter(o => o.checked).map(o => o.dataset.row));
+  if (tEl.checked && rows().size > limit) {
+    tEl.checked = false; c.marks[tEl.dataset.k] = false;
+    const g = tEl.closest('.eqgroup'); g.classList.remove('full'); void g.offsetWidth; g.classList.add('full');
+    setTimeout(() => g.classList.remove('full'), 700);
+  }
+  const n = document.querySelector(`[data-count="${tEl.dataset.lim}"]`); if (n) n.textContent = `${rows().size}/${limit}`;
+}
 
 document.addEventListener('submit', async e => {
   if (e.target.id !== 'photoForm') return;

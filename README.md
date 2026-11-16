@@ -25,3 +25,6 @@ Suba tudo, depois Settings → Pages → Branch `main` / root. Para testar local
 - **Página inicial** (`#/`): galeria com todas as fichas salvas, ordenadas pela última edição. Cada ficha abre em `#/c/<id>` (o botão Voltar do navegador funciona).
 - **Foto do personagem**: envie um arquivo (reduzido automaticamente para caber no navegador) ou cole o link de uma imagem. Fica salva junto com a ficha e vai no Exportar/Importar.
 - **Mobile**: ficha em uma coluna na ordem de uso (identidade, atributos, Movimento Inicial…), barra de abas inferior, textos com bullets/faixas ✴/caixas em itens separados. O layout de desktop (estilo ficha de papel) não muda.
+
+## Equipamento: limites e escolhas "um ou outro"
+Cada grupo de itens pode ter `limit` (ex.: "Escolha dois" → `limit: 2`). A ficha mostra o contador (0/2) e bloqueia a terceira escolha. Uma linha com duas opções (ex.: Fighter — peitoral *ou* couro batido) conta como **uma** escolha e só permite marcar uma delas. Os dados em `js/data/classes.js` (EN e PT) já estão com essa estrutura; o `tools/extract.py` gera apenas a base em inglês e não aplica essas correções.
