@@ -15,8 +15,14 @@ body{overflow-x:hidden}
   /* a ficha vira uma pilha: identidade e atributos primeiro */
   .sheet{display:flex;flex-direction:column}
   .col{display:contents}
-  .b-title{order:0}.b-id{order:1}.b-vitals{order:2}.b-sm{order:3}.b-origins{order:4}.b-rel{order:5}
-  .b-eq{order:6}.b-adv{order:7}.b-treasure{order:8}.b-examples{order:9}.b-spell{order:10}.b-notes{order:11}
+  /* pares que andam juntos ficam colados: Movimento Inicial + efeitos de magia; Relacionamentos + exemplos */
+  .b-title{order:0}.b-id{order:1}.b-vitals{order:2}.b-sm{order:3}.b-spell{order:4}.b-origins{order:5}.b-rel{order:6}.b-examples{order:7}
+  .b-eq{order:8}.b-adv{order:9}.b-treasure{order:10}.b-notes{order:11}
+  .b-rel{margin-bottom:.4rem}
+  .b-examples,.b-spell{background:#17130f08;border-left:3px solid var(--ink);padding:.5rem .8rem .6rem;margin-bottom:1.2rem}
+  .b-examples h2,.b-spell h2{border:0;margin:.1rem 0 .2rem;font-size:1.15rem}
+  .exlist .ibl{display:block;padding-left:1rem;text-indent:-1rem;margin:.35rem 0;font-size:.95rem}
+  .exlist{margin:0;line-height:1.45}
   .blk{margin-bottom:1rem}
   .b-id{background:#17130f08;border:1px solid #17130f2a;padding:.9rem;margin:.2rem 0 1rem}
   .b-title h1{font-size:2.3rem}

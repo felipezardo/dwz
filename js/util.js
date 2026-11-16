@@ -50,3 +50,10 @@ export function widgets(list = [], scope, m) {
     ? `<div class="wdg"><b>${esc(w.label)}</b> ${circles(`${scope}.w${i}`, w.n, m)}</div>`
     : `<label class="wdg fld">${line(`${scope}.w${i}`, m, w.label)}<small>${esc(w.label.replace('Deity’s Name Relationship Depth', 'Deity’s Name'))}</small></label>`).join('');
 }
+
+/** Lista de exemplos: itens ◆ (ou "Termo: …") viram spans — corrido no desktop, empilhados no mobile. */
+export const bullets = text => {
+  const parts = text.includes('◆') ? text.split(/\s*◆\s*/) : text.replace(/\.\s+(?=\p{Lu}\p{L}*:)/gu, '.\u0001').split('\u0001');
+  const [head, ...rest] = parts, mark = text.includes('◆') ? '◆ ' : '';
+  return (head ? `<span class="ibl first">${mark ? '' : ''}${esc(head)}</span>` : '') + rest.map(p => `<span class="ibl">${mark}${esc(p)}</span>`).join(' ');
+};

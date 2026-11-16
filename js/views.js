@@ -1,5 +1,5 @@
 import { t, getData } from './i18n.js';
-import { esc, box, circles, line, rich, para, paras, widgets } from './util.js';
+import { esc, box, circles, line, rich, para, paras, widgets, bullets } from './util.js';
 
 export const SIL = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="34" r="17"/><path d="M16 94c2-24 16-38 34-38s32 14 34 38z"/></svg>';
 export const STATS = ['str', 'dex', 'int', 'wis', 'cha'];
@@ -50,13 +50,13 @@ export function sheetView(c) {
     return `<div class="stat"><button class="statlbl" data-roll="${s}" title="${esc(ui.rollStatTitle(lbl))}">${esc(lbl)}</button><input type="number" data-k="s.${s}" value="${esc(m['s.' + s] ?? '')}" aria-label="${esc(lbl)}"></div>`;
   }).join('');
   const conds = CONDS.map(n => `<label class="cond">${box(`c.${n}`, m, 'circ')}<i>${esc(ui.conds[n])}</i></label>`).join('');
-  const spell = k.spellEffects ? `<div class="blk b-spell"><h2 class="sm">${esc(ui.spellEffects)}</h2><p class="ex">${esc(k.spellEffects.join(' ')).replace(/(Craft|Law|Light|Nature|Travel|Ofício|Lei|Luz|Natureza|Viagem):/g, '<b>$1:</b>')}</p></div>` : '';
+  const spell = k.spellEffects ? `<div class="blk b-spell"><h2 class="sm">${esc(ui.spellEffects)}</h2><p class="ex exlist">${bullets(k.spellEffects.join(' ')).replace(/(^|>)([^<:]{2,20}):/g, '$1<b>$2:</b>')}</p></div>` : '';
   return `<div class="paper sheet">
   <section class="col col-a">
     <div class="blk b-title"><h1>${esc(k.title)}</h1><p class="tagline">${esc(k.tagline)}</p></div>
     <div class="blk b-origins"><h2>${esc(ui.origins)}</h2>${origins}</div>
     <div class="blk b-rel"><h2>${esc(ui.relationships)}</h2>${rels}</div>
-    <div class="blk b-examples"><h2 class="sm">${esc(ui.relExamples)}</h2><p class="ex">${esc(k.relationshipExamples)}</p></div>
+    <div class="blk b-examples"><h2 class="sm">${esc(ui.relExamples)}</h2><p class="ex exlist">${bullets(k.relationshipExamples)}</p></div>
     <div class="blk b-treasure"><h2 class="sm">${esc(ui.treasureTrack)}</h2><p class="tt">${rich(k.treasure.track, 'tt', m)}</p><p class="ex">${esc(k.treasure.note)}</p></div>
     ${spell}
     <div class="blk b-notes"><h2 class="sm">${esc(ui.notes)}</h2><textarea data-k="notes" rows="5" aria-label="${esc(ui.notes)}">${esc(m.notes ?? '')}</textarea></div></section>

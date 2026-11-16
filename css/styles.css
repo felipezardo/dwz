@@ -236,3 +236,5 @@ button.mini{flex:1;padding:.15rem .3rem;font-size:.85rem;letter-spacing:.02em;wh
 @keyframes heal{40%{fill:#2c6a3a55;transform:scale(1.14)}}
 @keyframes hurt{25%{transform:translateX(-4px)}60%{transform:translateX(3px)}}
 @keyframes hurtfill{30%{fill:#9b2a2255}}
+
+.exlist .ibl{display:inline}
